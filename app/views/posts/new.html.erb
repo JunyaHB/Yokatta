@@ -19,7 +19,7 @@
   <%= form_with model: @post, local: true do |f| %>
     <div class="form-group">
       <%= f.label :"成功体験/失敗体験" %></br>
-      <%= f.select :category, [["成功談", "true"], ["失敗談", "false"]] ,class: "form-control" %></br>
+      <%= f.select :category, [["成功体験", "true"], ["失敗体験", "false"]] ,class: "form-control" %></br>
     </div>
     <div class="form-group">
       <%= f.label :投稿内容 %>

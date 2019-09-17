@@ -1,5 +1,5 @@
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('img/topimage4.jpg')">
+<header class="masthead" style="background-image: url('topimage.jpg')">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
@@ -17,37 +17,25 @@
 <!-- Main Content -->
   
 <div class="container-fluid h-auto p-3  second">
-    <p class="second-title" >みんなの投稿</p>
+  <p class="second-title" >みんなの投稿</p>
 
-    <div class="row">
-      
+<div class="row">    
+  <% @posts.each do |post| %>  
+  <% if post.category == true %>
     <div class="col-xs-3 content">
-        <img class="hoge" src="img/topimage.jpg">
-        <p class="username">名無しさん</p>
-        <p class="post"> となりの客はよく柿食う客だとなりの客はよく柿食う客だとなりの客はよく柿食う客だとなりの客はよく柿食う客だとなりの客はよく柿食う客だとなりの客はよく柿食う客だここに文章</p>
-        <span class="fa fa-heart like-btn">  21</span>
+      <img class="hoge" src="img/topimage.jpg">
+      <p class="username">名無しさん（成功）</p>
+      <p class="post"><%= post.content %></p>
+      <span class="fa fa-heart like-btn">  21</span>
     </div>
-
-      
-    <div class="col-xs-3 content">
-        <img class="hoge" src="img/topimage.jpg">
-        <p class="username">名無しさん</p>
-        <p class="post"> となりの客はよく柿食う客だとなりの客はよく柿食う客だとなりの客はよく柿食う客だとなりの客はよく柿食う客だとなりの客はよく柿食う客だとなりの客はよく柿食う客だここに文章</p>
-        <span class="fa fa-heart like-btn">  21</span>
+  <% else %>
+    <div class="col-xs-3 content-false">
+      <img class="hoge" src="img/topimage.jpg">
+      <p class="username">名無しさん(失敗)</p>
+      <p class="post"><%= post.content %></p>
+      <span class="fa fa-heart like-btn">  21</span>
     </div>
-
-    <div class="col-xs-3 content">
-        <img class="hoge" src="img/topimage.jpg">
-        <p class="username">名無しさん</p>
-        <p class="post"> となりの客はよく柿食う客だとなりの客はよく柿食う客だとなりの客はよく柿食う客だとなりの客はよく柿食う客だとなりの客はよく柿食う客だとなりの客はよく柿食う客だここに文章</p>
-        <span class="fa fa-heart like-btn">  21</span>
-    </div>
-
-    <div class="col-xs-3 content">
-        <img class="hoge" src="img/topimage.jpg">
-        <p class="username">名無しさん</p>
-        <p class="post"> となりの客はよく柿食う客だとなりの客はよく柿食う客だとなりの客はよく柿食う客だとなりの客はよく柿食う客だとなりの客はよく柿食う客だとなりの客はよく柿食う客だここに文章</p>
-        <span class="fa fa-heart like-btn">  21</span>
-    </div>
-  </div>  
+  <% end %>
+<% end %>
+</div>
 </div>
