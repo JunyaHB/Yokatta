@@ -1,6 +1,6 @@
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
 
-  before_action :login_required, only: %i[edit]
+  before_action :login_required, only: %i[edit]  
 
   def new
     @user = User.new
@@ -25,17 +25,14 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to posts_url, notice: "ユーザー登録が完了しました。"
     else
-      render :new
+      render :new_admin_user_path
     end
-  end
-
-  def index
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image_name)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image_name, :admin)
   end
 
   def login_required
@@ -43,3 +40,4 @@ class UsersController < ApplicationController
   end
 
 end
+

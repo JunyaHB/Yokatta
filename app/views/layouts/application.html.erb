@@ -18,29 +18,56 @@
     <!-- Navigation -->  
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="index.html">Yokkata!</a>
+        <%= link_to "Yokkata!", posts_path, class:"navbar-brand" %>
        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>
         </button>
        <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <%= link_to "ホーム", posts_path, class:"nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "投稿", new_post_path, class:"nav-link" %>
 
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="post.html">編集</a>
-           </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">ログイン</a>
-            </li>
-            <li class="nav-item">
+          
+
+          <% if current_user %>
+
+          <li class="nav-item">
+            <%= link_to "管理者登録", new_admin_user_path, class:"nav-link" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "管理者権限編集", "/admin/users/#{current_user.id}/edit", class:"nav-link" %>
+          </li>
+
+
+
+          <li class="nav-item">
+            <%= link_to "ホーム", posts_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "新規投稿", new_post_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "プロフィール編集", "/users/#{current_user.id}/edit", class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", "/logout", method: :delete, class:"nav-link" %>
+          </li>
+
+          <% else %>
+          
+          <li class="nav-item">
+            <%= link_to "ホーム", posts_path, class:"nav-link" %>
+          </li>            
+          <li class="nav-item">
+            <%= link_to "ログイン", "/login", class:"nav-link" %>
+          </li>
+          <li class="nav-item">
             <%= link_to "新規登録", new_user_path, class:"nav-link" %>
-            </li>
+          </li>
+
+          <% end %>
+
+
           </ul>
        </div>
      </div>
