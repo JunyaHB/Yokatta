@@ -1,6 +1,7 @@
 class Admin::UsersController < ApplicationController
 
   before_action :login_required, only: %i[edit]  
+  before_action :require_admin
 
   def new
     @user = User.new
@@ -37,6 +38,10 @@ class Admin::UsersController < ApplicationController
 
   def login_required
     redirect_to login_url, notice: "ログインをお願い致します。" unless current_user
+  end
+
+  def require_admin
+    redirect_to root_url unless current_user.admin?
   end
 
 end

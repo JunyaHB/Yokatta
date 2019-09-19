@@ -31,16 +31,6 @@
           <% if current_user %>
 
           <li class="nav-item">
-            <%= link_to "管理者登録", new_admin_user_path, class:"nav-link" %>
-          </li>
-
-          <li class="nav-item">
-            <%= link_to "管理者権限編集", "/admin/users/#{current_user.id}/edit", class:"nav-link" %>
-          </li>
-
-
-
-          <li class="nav-item">
             <%= link_to "ホーム", posts_path, class:"nav-link" %>
           </li>
           <li class="nav-item">
@@ -52,6 +42,16 @@
           <li class="nav-item">
             <%= link_to "ログアウト", "/logout", method: :delete, class:"nav-link" %>
           </li>
+
+          <% if current_user.admin? %>
+            <li class="nav-item">
+              <%= link_to "管理者登録", new_admin_user_path, class:"nav-link" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "管理者権限編集", "/admin/users/#{current_user.id}/edit", class:"nav-link" %>
+            </li>
+          <% end %>
 
           <% else %>
           

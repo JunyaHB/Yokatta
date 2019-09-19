@@ -74,7 +74,20 @@
     margin: 0; 
     padding: 0;
   }
-  
+ 
+  .content-edit {
+    position: absolute;
+    left: 245px;
+    bottom: 10px;
+    font-size: 12px;
+  }
+
+  .content-delete {
+    position: absolute;
+    left: 275px;
+    bottom: 10px;
+    font-size: 12px;
+    }
 
   .second-title{
     text-align: center;
