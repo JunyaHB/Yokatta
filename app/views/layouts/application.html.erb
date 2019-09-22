@@ -45,6 +45,10 @@
 
           <% if current_user.admin? %>
             <li class="nav-item">
+              <%= link_to "ユーザー一覧", users_path, class:"nav-link" %>
+            </li>
+
+            <li class="nav-item">
               <%= link_to "管理者登録", new_admin_user_path, class:"nav-link" %>
             </li>
 

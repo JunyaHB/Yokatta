@@ -16,7 +16,7 @@
 
 <!-- Main Content -->
 <div class="container">
-  <%= form_with model: @user, local: true do |f| %>
+  <%= form_with model: @user, multipart: true, url: "/admin/users/#{@user.id}" do |f| %>
     <div class="form-group">
       <%= f.label :ニックネーム %>
       <%= f.text_field :name, rows: 5, class: 'form-control' %>
@@ -33,7 +33,10 @@
       <%= f.label :"管理者権限" %></br>
       <%= f.select :admin, [["〇", "true"], ["×", "false"]] ,class: "form-control" %></br>
     </div>
-    <%= f.submit "登録する", class: "btn btn-primary" %>
-    
+    <div class="form-group">
+      <%= f.label :画像 %></br>
+      <input name="image" type="file">
+    </div>
+    <%= f.submit "変更する", class: "btn btn-primary" %>
   <% end %>
 </div>

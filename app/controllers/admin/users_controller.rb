@@ -11,21 +11,35 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def update
+    user = User.find(params[:id])
+    
+    if params[:image]
+      user.image_name = "#{user.id}.jpg"
+      image = params[:image]
+      File.binwrite("public/user_images/#{user.image_name}", image.read)
+    end
+
+    user.update!(user_params)
+    redirect_to posts_url, notice: "管理者権限によりプロフィールを編集しました。"
+  end
+
   def create
     @user = User.new(user_params)
     @user.image_name = "default_user.png"
 
-#    if params[:image]
-#      @user.image_name = "#{@user.id}.jpg"
-#      image = params[:image]
-#      File.binwrite("public/user_images/#{@user.image_name}", image.read)
-#    else
-#      @user.image_name = "default_user.png"
-#    end    
-
     if @user.save
+      if params[:image]
+        @user.image_name = "#{@user.id}.jpg"
+        image = params[:image]
+        File.binwrite("public/user_images/#{@user.image_name}", image.read)
+      else
+        @user.image_name = "default_user.png"
+      end    
+      @user.save
       redirect_to posts_url, notice: "ユーザー登録が完了しました。"
-    else
+ 
+   else
       render :new_admin_user_path
     end
   end

@@ -16,8 +16,8 @@
     }
       
   .content{
-    width: 330px;
-    height: 180px;
+    width: 340px;
+    height: 200px;
     position: relative;
     background: #FFF2E5;
     box-shadow: 0px 0px 0px 5px #FFF2E5;
@@ -46,8 +46,8 @@
   }
 
   .content-false{
-    width: 330px;
-    height: 180px;
+    width: 340px;
+    height: 200px;
     position: relative;
     background: #D9E5FF;
     box-shadow: 0px 0px 0px 5px #D9E5FF;
@@ -102,8 +102,8 @@
     position: absolute;
     top: 10px;
     left: 20px;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 40%;
     box-shadow: 0 2px 6px #c1ced7;
     object-fit: cover;
@@ -111,18 +111,28 @@
 
   .post {
     position: absolute;
-    top: 70px;
+    top: 85px;
     left: 20px;
     right: 20px;
     bottom: 10px;
-    font-size: 12px;
+    font-size: 14px;
+  }
+
+  .post_cate {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    right: 20px;
+    bottom: 10px;
+    font-size: 14px;
   }
 
   .username {
     position: absolute;
-    top: 25px;
-    left: 90px;
+    top: 17px;
+    left: 70px;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px
   }
 
 
