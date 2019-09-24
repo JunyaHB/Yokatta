@@ -35,7 +35,20 @@
           <%= link_to "編集", edit_post_path(post), class:"content-edit" %>
         <% end %>
       <% end %>
-      <span class="fa fa-heart like-btn">  21</span>
+
+      <% if current_user %>      
+        <% if Like.find_by(user_id: current_user.id, comment_id: post.id) %>
+          <%= link_to( "/likes/#{post.id}/destroy", {method: "post"}) do %>
+            <span class="fa fa-heart like-btn">  <%= Like.where(comment_id: post.id).count %></span>
+          <% end %>
+       <% else %>
+          <%= link_to( "/likes/#{post.id}/create", {method: "post"}) do %>
+            <span class="fa fa-heart unlike-btn">  <%= Like.where(comment_id: post.id).count %></span>
+          <% end %>
+       <% end %>
+      <% else %>
+        <span class="fa fa-heart like-btn">  <%= Like.where(comment_id: post.id).count %></span>
+      <% end %>
     </div>
   <% else %>
     <div class="col-xs-3 content-false">
@@ -51,7 +64,21 @@
         <% end %>
         <% end %>
 
-      <span class="fa fa-heart like-btn">  21</span>
+    <% if current_user %>          
+      <% if Like.find_by(user_id: current_user.id, comment_id: post.id) %>
+        <%= link_to( "/likes/#{post.id}/destroy", {method: "post"}) do %>
+          <span class="fa fa-heart like-btn">  <%= Like.where(comment_id: post.id).count %></span>
+        <% end %>
+      <% else %>
+        <%= link_to( "/likes/#{post.id}/create", {method: "post"}) do %>
+          <span class="fa fa-heart unlike-btn">  <%= Like.where(comment_id: post.id).count %></span>
+        <% end %>
+      <% end %>
+    <% else %>
+      <span class="fa fa-heart like-btn">  <%= Like.where(comment_id: post.id).count %></span>
+    <% end %>
+
+
     </div>
   <% end %>
 <% end %>
