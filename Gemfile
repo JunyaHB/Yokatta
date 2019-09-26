@@ -66,3 +66,4 @@ gem 'font-awesome-sass', '~> 5.4.1'
 gem "font-awesome-rails"
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'fog'
