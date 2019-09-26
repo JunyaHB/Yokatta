@@ -58,6 +58,10 @@ group :test do
   gem 'chromedriver-helper'
 end
 
+group :production do
+  gem 'fog'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
@@ -66,4 +70,3 @@ gem 'font-awesome-sass', '~> 5.4.1'
 gem "font-awesome-rails"
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'fog'
