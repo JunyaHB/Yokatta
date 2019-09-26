@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   delete "posts/:id/destroy" => "posts#destroy"
+  delete "/admin/users/:id/destroy" => "users#destroy"
   root to: 'posts#index'
   resources :users
   resources :posts

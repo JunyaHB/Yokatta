@@ -25,7 +25,7 @@
         name:   <%= user.name %></br>
         email:  <%= user.email %></br>
         admin:  <%= user.admin %>
-        <%= link_to "削除", "/users/#{user.id}/destroy", method: :delete, class:"content-delete", data: { confirm: "ユーザーを削除します。よろしいですか？"} %>
+        <%= link_to "削除", "/admin/users/#{user.id}/destroy", method: :delete, class:"content-delete", data: { confirm: "ユーザーを削除します。よろしいですか？"} %>
         <%= link_to "編集", "/admin/users/#{user.id}/edit", class:"content-edit" %>
         
       </div>

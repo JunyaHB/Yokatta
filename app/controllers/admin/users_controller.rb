@@ -21,7 +21,7 @@ class Admin::UsersController < ApplicationController
     end
 
     user.update!(user_params)
-    redirect_to posts_url, notice: "管理者権限によりプロフィールを編集しました。"
+    redirect_to users_url, notice: "管理者権限によりプロフィールを編集しました。"
   end
 
   def create
@@ -43,6 +43,7 @@ class Admin::UsersController < ApplicationController
       render :new_admin_user_path
     end
   end
+
 
   private
 

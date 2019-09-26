@@ -16,7 +16,18 @@
 
 <!-- Main Content -->
 <div class="container">
-  <%= form_with model: @user, multipart: true do |f| %>   
+
+  <% if @user.errors.present? %>
+    <div class="form-error">
+      <span>入力エラー：</span>
+      <% @user.errors.full_messages.each do |message| %></br>
+        <%= message %>
+      <% end %>
+    </div>
+    </br>
+  <% end %>
+
+  <%= form_with model: @user, local: true, multipart: true do |f| %>   
     <div class="form-group">
       <%= f.label :ニックネーム %>
       <%= f.text_field :name, rows: 5, class: 'form-control' %>
@@ -33,8 +44,6 @@
       <%= f.label :画像 %></br>
       <input name="image" type="file">
     </div>
-
     <%= f.submit "登録する", class: "btn btn-primary" %>
-    
   <% end %>
 </div>
