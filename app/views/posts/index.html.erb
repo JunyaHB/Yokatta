@@ -19,8 +19,9 @@
 <div class="container-fluid h-auto p-3  second">
   <p class="second-title" >みんなの投稿</p>
 
+
+
 <div class="row">
-      
   <% @posts.each do |post| %>  
   <% if post.category == true %>
     <div class=" col-xs-12 content">
@@ -83,4 +84,7 @@
   <% end %>
 <% end %>
 </div>
+</div>
+<div class="mt-2 mb-5 ml-4">
+  <%= paginate @posts %>
 </div>

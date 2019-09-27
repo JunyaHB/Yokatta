@@ -4,8 +4,8 @@ class PostsController < ApplicationController
   before_action :edit_login_required, only: %i[edit]
 
   def index
-    @posts = Post.all
-    
+    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.page(params[:page]).per(12)
   end
 
   def edit
