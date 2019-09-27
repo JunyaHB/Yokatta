@@ -37,7 +37,7 @@ class Admin::UsersController < ApplicationController
         @user.image_name = "default_user.png"
       end    
       @user.save
-      redirect_to posts_url, notice: "ユーザー登録が完了しました。"
+      redirect_to users_path, notice: "ユーザー登録が完了しました。"
  
    else
       render :new_admin_user_path
