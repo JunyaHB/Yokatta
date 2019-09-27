@@ -23,7 +23,7 @@
       
   <% @posts.each do |post| %>  
   <% if post.category == true %>
-    <div class="col-xs-3 content">
+    <div class=" col-xs-12 content">
       <img class="hoge" src="<%= "/user_images/#{post.user.image_name}" %>">
       <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span></p>
       <p class="post_cate">成功体験：</p>
@@ -51,7 +51,7 @@
       <% end %>
     </div>
   <% else %>
-    <div class="col-xs-3 content-false">
+    <div class=" col-xs-12 content-false">
       <img class="hoge" src="<%= "/user_images/#{post.user.image_name}" %>">
       <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span></p>
       <p class="post_cate">失敗体験：</p>
