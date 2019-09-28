@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
 
-  before_action :login_required, only: %i[new]
-  before_action :edit_login_required, only: %i[edit]
-
+  before_action :login_required, only: %i[create, new]
+  before_action :edit_login_required, only: %i[update, edit]
+  before_action :destroy_login_required, only: %i[destroy]
+  
   def index
     @posts = Post.all.order(created_at: :desc)
     @posts = Post.page(params[:page]).per(12).order('created_at DESC')
@@ -61,7 +62,19 @@ class PostsController < ApplicationController
       redirect_to posts_url
     end
   end
-  
+
+  def destroy_login_required
+    post = Post.find(params[:id])
+    if current_user
+      unless current_user.admin? || post.user_id == current_user.id
+        redirect_to posts_url
+      end
+    end
+
+    unless current_user
+      redirect_to posts_url
+    end
+  end
 
 
 end

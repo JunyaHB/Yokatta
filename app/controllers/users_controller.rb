@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
 
   before_action :login_required, only: %i[edit]
-  before_action :edit_limit, only: %i[edit]
-  before_action :require_admin, only: %i[index]
-
+  before_action :edit_limit, only: %i[edit, update]
+  before_action :require_admin, only: %i[destroy, index]
+  before_action :postsindex_redirect, only: %i[new]
+  
   def new
     @user = User.new
   end
@@ -73,8 +74,17 @@ class UsersController < ApplicationController
 
 #管理者のみアクセス可
   def require_admin
-    redirect_to root_url unless current_user.admin?
+    if current_user
+      unless current_user.admin?
+        redirect_to root_url 
+      end
+    else
+      redirect_to root_url 
+    end
   end
 
+  def postsindex_redirect
+    redirect_to posts_url, notice: "既にログイン済みです。" if current_user
+  end
 
 end
