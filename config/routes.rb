@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   root to: 'posts#index'
   resources :users
   resources :posts
+
+  get "/terms", to: "rules#terms"
+  get "/privacy", to: "rules#privacy"
+
 end
