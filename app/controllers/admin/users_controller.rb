@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
 
-  before_action :login_required, only: %i[edit]  
-  before_action :require_admin
+  #before_action :login_required, only: %i[edit]  
+  #before_action :require_admin
 
   def new
     @user = User.new
