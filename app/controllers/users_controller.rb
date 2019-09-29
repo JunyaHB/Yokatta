@@ -21,18 +21,18 @@ class UsersController < ApplicationController
 
 
   def update
-    user = User.find(params[:id])
+    @user = User.find(params[:id])
 
     if params[:image]
-      user.image_name = "#{user.id}.jpg"
+      @user.image_name = "#{@user.id}.jpg"
       image = params[:image]
-      File.binwrite("public/user_images/#{user.image_name}", image.read)
+      File.binwrite("public/user_images/#{@user.image_name}", image.read)
     end
 
-    user.update!(user_params)
+    @user.update!(user_params)
     redirect_to posts_url, notice: "プロフィールを編集しました。"
   end
-
+  
   def create
     @user = User.new(user_params)
 
