@@ -20,7 +20,11 @@
   <div class="row">
     <% @user.each do |user| %> 
       <div class="col-xs-4 content">
-        <img class="hoge" src="<%= "/user_images/#{user.image_name}" %>">
+        <% if user.image_name? %>
+          <%= image_tag user.image_name.url, class:"hoge" if user.image_name? %>
+        <% else %>  
+          <img class="hoge" src="<%= "/user_images/default_user.png" %>">
+        <% end %>
         </br></br>
         id:     <%= user.id %></br>
         name:   <%= user.name %></br>
