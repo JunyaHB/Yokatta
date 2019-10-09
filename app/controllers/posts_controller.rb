@@ -75,6 +75,7 @@ class PostsController < ApplicationController
       redirect_to posts_url
     end
   end
-
-
 end
+
+
+
