@@ -1,0 +1,39 @@
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('img/topimage4.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">        
+          <h2>ユーザー一覧</h2>
+          <span class="subheading"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- Main Content -->
+<div class="container">
+  <center><h5>削除機能は、使わない！不正ユーザーは、パスワード変更で対応</h5></center>
+  <div class="row">
+    <% @user.each do |user| %> 
+      <div class="col-xs-4 content">
+        <% if user.image_name? %>
+          <%= image_tag user.image_name.url, class:"hoge" if user.image_name? %>
+        <% else %>  
+          <img class="hoge" src="<%= "/user_images/default_user.png" %>">
+        <% end %>
+        </br></br>
+        id:     <%= user.id %></br>
+        name:   <%= user.name %></br>
+        email:  <%= user.email %></br>
+        admin:  <%= user.admin %>
+        
+        <%= link_to "編集", "/admin/users/#{user.id}/edit", class:"content-edit" %>
+        
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('/postimage.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">        
+          <h2>新しく『成功/失敗体験』を投稿</h2>
+          <span class="subheading"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- Main Content -->
+<div class="container">
+
+<% if @post.errors.present? %>
+<div class="form-error">
+  <span>入力エラー：</span>
+  <% @post.errors.full_messages.each do |message| %></br>
+    <%= message %>
+  <% end %>
+</div>
+</br>
+<% end %>
+
+  <%= form_with model: @post, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :"成功体験/失敗体験" %></br>
+      <%= f.select :category, [["成功体験", "true"], ["失敗体験", "false"]] ,class: "form-control" %></br>
+    </div>
+    <div class="form-group">
+      <%= f.label :投稿内容（150文字まで） %>
+      <%= f.text_area :content, rows: 5, class: 'form-control', id: 'post_description' %>
+    </div>
+      <%= f.submit "投稿", class: "btn btn-primary" %>
+    
+  <% end %>
+</div>
