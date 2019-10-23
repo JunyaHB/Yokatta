@@ -19,4 +19,10 @@ Rails.application.routes.draw do
   get "/terms", to: "rules#terms"
   get "/privacy", to: "rules#privacy"
 
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+
+  resources :sessions, only: %i(new create destroy)
+  resources :home, only: %i(index)
+
 end
