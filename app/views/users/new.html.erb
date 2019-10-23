@@ -29,6 +29,10 @@
 
   <center><p>Yokatta!の<%= link_to "利用規約", "/terms", class:"copyright text-muted" %>および<%= link_to "プライバシーポリシー", "/privacy", class:"copyright text-muted" %>にご同意の上、ユーザー登録をお願いいたします。</p></center>
 
+  <%= link_to "/auth/google_oauth2" do %>
+    <%= image_tag "/google3.png", class:"google_button" %>
+  <% end %>
+
   <%= form_with model: @user, local: true, multipart: true do |f| %>   
     <div class="form-group">
       <%= f.label :ニックネーム %>
@@ -52,6 +56,7 @@
       <%= f.label :プロフィール画像 %></br>
       <%= f.file_field :image_name %>
     </div>
+    </br>
     <%= f.submit "登録する", class: "btn btn-primary" %>
   <% end %>
 </div>

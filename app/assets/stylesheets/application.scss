@@ -608,3 +608,18 @@
   background: #ffa07a;
   border-color: #f1c7a2;
 }
+
+.google_button{
+  width: 20%;
+  margin-bottom: 30px;
+}
+
+.google_button:hover{
+	opacity:0.6;
+	cursor: pointer;
+}
+ 
+.google_button:active{
+	position: relative;
+	top: 3px; 
+}

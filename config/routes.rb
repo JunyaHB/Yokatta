@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  get 'oauth/new'
+  get 'oauth/create'
+  get 'oauth/destroy'
   namespace :admin do
     resources :users
   end  
@@ -18,5 +21,14 @@ Rails.application.routes.draw do
 
   get "/terms", to: "rules#terms"
   get "/privacy", to: "rules#privacy"
+
+
+  
+  get 'auth/:provider/callback', to: 'oauth#create'
+  get 'auth/failure', to: redirect('/')
+  
+
+  resources :oauth, only: %i(new create destroy)
+  resources :home, only: %i(index)
 
 end
