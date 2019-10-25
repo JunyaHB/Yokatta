@@ -39,6 +39,7 @@ gem 'carrierwave',             '1.2.2'
 gem 'mini_magick'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'rails-i18n'
 
 
 group :development, :test do
