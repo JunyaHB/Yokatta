@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        id: ID
+        name: 名前
+        email: メールアドレス
+      post:
+        id: ID
+        content: 投稿内容
+        category: 体験区分
