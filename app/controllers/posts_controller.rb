@@ -7,6 +7,8 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.order(created_at: :desc)
     @posts = Post.page(params[:page]).per(12).order('created_at DESC')
+    @all_ranks = Post.find(Like.group(:comment_id).order('count(comment_id) DESC').pluck(:comment_id))
+    @i = 1
   end
 
   def edit

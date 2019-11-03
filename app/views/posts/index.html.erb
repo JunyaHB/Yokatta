@@ -15,13 +15,119 @@
 
 
 <!-- Main Content -->
+<% if @posts.page(params[:page]).first_page? %>
+<div class="container-fluid pt-2 pb-5" style="background-image: url('/ranking-background.jpg')">
 
-<div class="container-fluid h-auto second">
-  <p class="second-title mb-2" >みんなで経験を共有しよう</p>
-  <center class="mb-4">日常の成功/失敗談を気軽に共有するアプリです。</center>
+  <p class="second-title mb-3" >注目されている体験</p>
+
+  <div class="row">
+
+    <div class="col-lg-6 col-xl-12">   
+    <div class="row">
+      <% @all_ranks.each do |post|  %>        
+        <% if post.category == true && @i < 4 %>    
+          <div class="col-xs-12 content-ranking">
+            <% if post.user.image_name? %>
+              <%= image_tag post.user.image_name.url, class:"hoge" if post.user.image_name? %>
+        <% else %>  
+           <img class="hoge" src="<%= "/user_images/default_user.png" %>">
+        <% end %>
+
+        <% if @i == 1 %>
+          <p class="username-rinking"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal gold"></span></p>
+        <% elsif @i == 2 %>
+          <p class="username-rinking"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal silver"></span></p>
+        <% else %>
+          <p class="username-rinking"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal dou"></span></p>
+        <% end %>
+        <p class="post_cate-ranking">成功体験：</p>
+        <p class="post-ranking"><%= post.content %></p>
+  
+  
+        <% if current_user %>      
+          <% if Like.find_by(user_id: current_user.id, comment_id: post.id) %>
+            <%= link_to( "/likes/#{post.id}/destroy", {method: "post"}) do %>
+              <span class="fa fa-heart like-btn">  <%= Like.where(comment_id: post.id).count %></span>
+            <% end %>
+         <% else %>
+            <%= link_to( "/likes/#{post.id}/create", {method: "post"}) do %>
+              <span class="fa fa-heart unlike-btn">  <%= Like.where(comment_id: post.id).count %></span>
+            <% end %>
+         <% end %>
+        <% else %>
+          <span class="fa fa-heart like-btn">  <%= Like.where(comment_id: post.id).count %></span>
+        <% end %>
+            <% @i += 1 %>
+          </div>
+        <% end %>
+      <% end %>  
+    </div>          
+    </div>
+
+    <div class="col-lg-6 col-xl-12">   
+    <div class="row">
+      <% @all_ranks.each do |post|  %>
+        <% if post.category == false && @i < 7 %>    
+          <div class="col-xs-12 content-false-ranking ">
 
 
-<div class="row">
+          <% if post.user.image_name? %>
+          <%= image_tag post.user.image_name.url, class:"hoge" if post.user.image_name? %>
+         <% else %>  
+          <img class="hoge" src="<%= "/user_images/default_user.png" %>">
+        <% end %>
+  
+        <% if @i == 4 %>
+          <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal gold"></span></p>
+        <% elsif @i == 5 %>
+          <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal silver"></span></p>
+        <% else %>
+          <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal dou"></span></p>
+        <% end %>
+
+        <p class="post_cate">失敗体験：</p>
+        <p class="post"><%= post.content %></p>
+        
+  
+      <% if current_user %>          
+        <% if Like.find_by(user_id: current_user.id, comment_id: post.id) %>
+          <%= link_to( "/likes/#{post.id}/destroy", {method: "post"}) do %>
+            <span class="fa fa-heart like-btn">  <%= Like.where(comment_id: post.id).count %></span>
+          <% end %>
+        <% else %>
+          <%= link_to( "/likes/#{post.id}/create", {method: "post"}) do %>
+            <span class="fa fa-heart unlike-btn">  <%= Like.where(comment_id: post.id).count %></span>
+          <% end %>
+        <% end %>
+      <% else %>
+        <span class="fa fa-heart like-btn">  <%= Like.where(comment_id: post.id).count %></span>
+      <% end %>
+  
+
+
+            <% @i += 1 %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>   
+    </div>
+  </div>
+
+</div>
+<% end %>
+
+
+
+
+<div class="container-fluid pt-2" style="background-image: url('/stripes.png')">
+
+  <p class="second-title pt-4" >日常の成功/失敗談を気軽に共有しよう！</p>
+  <center class="mb-4" style="font-weight: bold;">～最近の投稿～</center>
+
+
+
+
+<div class="row mt-4">
   <% @posts.each do |post| %>  
   <% if post.category == true %>
     <div class=" col-xs-12 content">
