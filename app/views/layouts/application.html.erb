@@ -84,6 +84,12 @@
      </div>
    <% end %>
 
+   <% if flash[:danger].present? %>
+     <div class="alert alert-false">
+       <%= flash[:danger] %>
+     </div>
+   <% end %>
+
     <%= yield %>
 
     <!-- Footer -->
