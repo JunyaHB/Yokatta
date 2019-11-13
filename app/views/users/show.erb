@@ -56,7 +56,7 @@
 </center>
 <% end %>
 
-<% if @user.public == true || current_user %>
+<% if @user.public == true || current_user.id == @user.id %>
 <p class="second-title mb-3" >活動実績<i class="fas fa-chart-line ml-2"></i></p>
 
 <div class="row">
