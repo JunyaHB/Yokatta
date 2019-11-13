@@ -33,17 +33,29 @@
            <img class="hoge" src="<%= "/user_images/default_user.png" %>">
         <% end %>
         <% if @i == 1 %>
+        <% if current_user %> 
           <%= link_to "/users/#{post.user.id}" do %>
             <p class="username-rinking"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal gold"></span></p>
           <% end %>
+        <% else %>
+        <p class="username-rinking"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal gold"></span></p>
+        <% end %>
         <% elsif @i == 2 %>
+        <% if current_user %>      
           <%= link_to "/users/#{post.user.id}" do %>
             <p class="username-rinking"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal silver"></span></p>
           <% end %>
         <% else %>
+          <p class="username-rinking"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal silver"></span></p>
+        <% end %>
+        <% else %>
+        <% if current_user %>      
           <%= link_to "/users/#{post.user.id}" do %>
             <p class="username-rinking"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal dou"></span></p>
           <% end %>
+        <% else %>
+          <p class="username-rinking"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal dou"></span></p>
+        <% end %>
         <% end %>
         <p class="post_cate-ranking">成功体験：</p>
         <p class="post-ranking"><%= post.content %></p>
@@ -83,17 +95,29 @@
         <% end %>
   
         <% if @i == 4 %>
+        <% if current_user %>      
           <%= link_to "/users/#{post.user.id}" do %>
             <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal gold"></span></p>
           <% end %>
+        <% else %>
+        <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal gold"></span></p>
+        <% end %>
             <% elsif @i == 5 %>
+        <% if current_user %>      
           <%= link_to "/users/#{post.user.id}" do %>
             <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal silver"></span></p>
           <% end %>    
         <% else %>
+          <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal silver"></span></p>
+        <% end %>
+        <% else %>
+        <% if current_user %>        
           <%= link_to "/users/#{post.user.id}" do %>
             <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal dou"></span></p>
           <% end %>    
+        <% else %>
+          <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal dou"></span></p>
+        <% end %>        
         <% end %>
 
         <p class="post_cate">失敗体験：</p>
@@ -151,9 +175,14 @@
       <% else %>  
        <img class="hoge" src="<%= "/user_images/default_user.png" %>">
       <% end %>
+      <% if current_user %>      
         <%= link_to "/users/#{post.user.id}" do %>
           <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span></p>
         <% end %>
+      <% else %>
+        <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span></p>
+      <% end %>
+      
       <p class="post_cate">成功体験：</p>
       <p class="post"><%= post.content %></p>
 
@@ -186,9 +215,15 @@
        <% else %>  
         <img class="hoge" src="<%= "/user_images/default_user.png" %>">
       <% end %>
-      <%= link_to "/users/#{post.user.id}" do %>
-        <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span></p>
+
+      <% if current_user %>      
+        <%= link_to "/users/#{post.user.id}" do %>
+          <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span></p>
         <% end %>
+      <% else %>
+        <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span></p>
+      <% end %>
+
       <p class="post_cate">失敗体験：</p>
       <p class="post"><%= post.content %></p>
       
