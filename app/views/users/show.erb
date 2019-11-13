@@ -1,0 +1,124 @@
+<!-- Page Header -->
+<% if @user.backimage? %>
+  <header class="masthead" style="background-image: url('<%= "#{@user.backimage.url}" %>')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">        
+            <h2></h2>
+            <span class="subheading"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+<% else %>
+  <header class="masthead" style="background-image: url('/user_backimage/default_back.jpg')">
+    <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">        
+            <h2></h2>
+            <span class="subheading"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+<% end %>
+
+<!-- Main Content -->
+<div style="background-image: url('/stripes.png')">
+<div class="container">
+
+
+　<div class="row">
+    <% if @user.image_name? %>
+      <%= image_tag "#{@user.image_name.url}", class:"profileimage" %> 
+    <% else %>  
+      <img class="profileimage" src="<%= "/user_images/default_user.png" %>">
+    <% end %>  
+  </div> 
+
+  
+  <p class="profile-name mt-5 pt-5"><%= "#{@user.name}" %><span style="font-size:20px font-weight: bold;">  さん</span></p>
+  <div class="profile-comment mb-4">
+    <center><%= "#{@user.comment}" %></center>
+  </div> 
+
+<% if current_user.id == @user.id %>  
+<center>
+  <%= link_to  "/users/#{@user.id}/edit", class: 'btn btn-primary mb-4' do %>
+    <i class="fa fa-chevron-right"></i>プロフィール編集
+  <% end %>
+</center>
+<% end %>
+
+<% if @user.public == true || current_user %>
+<p class="second-title mb-3" >活動実績<i class="fas fa-chart-line ml-2"></i></p>
+
+<div class="row">
+  <div class="col-md-12 col-lg-6" style="margin: auto 0">
+    <p><i class="fas fa-history mr-2"></i><%= "#{@user.created_at.strftime('%Y年%m月%d日')}" %>から"Yokatta!"を利用しています</p>
+    <p><i class="fas fa-users mr-2"></i>フォロワー　99人 ※フォロー機能は、近日実装予定</p>                                                
+    <p><i class="fas fa-paper-plane mr-2"></i>投稿件数　<%= @user.posts.where(user_id: "#{@user.id}").count %>件</p>
+  </div>
+  <div class="col-md-12 col-lg-6">
+    <center class="mb-3">投稿割合</center>
+    <center><%= pie_chart @chart, colors: ["#FFC93C", "#6495ED"], width: "250px" %></center>
+  </div>  
+</div> 
+
+
+
+<ul class="user-tabs">
+  <li class="active"><%= link_to("過去の成功体験", "/users/#{@user.id}") %></li>
+  <li style="padding: 0 20px"><%= link_to("過去の失敗体験", "/users/#{@user.id}/show_false") %></li>
+  <li><%= link_to("いいね!した体験", "/users/#{@user.id}/likes") %></li>
+</ul>
+
+<div class="row">
+<% @posts.each do |post| %>  
+  <div class=" col-xs-12 content">
+    <% if post.user.image_name? %>
+      <%= image_tag post.user.image_name.url, class:"hoge" if post.user.image_name? %>
+    <% else %>  
+     <img class="hoge" src="<%= "/user_images/default_user.png" %>">
+    <% end %>
+      <%= link_to "/users/#{post.user.id}" do %>
+        <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span></p>
+      <% end %>
+    <p class="post_cate">成功体験：</p>
+    <p class="post"><%= post.content %></p>
+
+    <% if current_user %>
+      <% if current_user.admin? || post.user_id == current_user.id %>
+        <%= link_to "削除", "/posts/#{post.id}/destroy", method: :delete, class:"content-delete", data: { confirm: "投稿を削除します。よろしいですか？"} %>
+        <%= link_to "編集", edit_post_path(post), class:"content-edit" %>
+      <% end %>
+    <% end %>
+
+    <% if current_user %>      
+      <% if Like.find_by(user_id: current_user.id, comment_id: post.id) %>
+        <%= link_to( "/likes/#{post.id}/destroy", {method: "post"}) do %>
+          <span class="fa fa-heart like-btn">  <%= Like.where(comment_id: post.id).count %></span>
+        <% end %>
+     <% else %>
+        <%= link_to( "/likes/#{post.id}/create", {method: "post"}) do %>
+          <span class="fa fa-heart unlike-btn">  <%= Like.where(comment_id: post.id).count %></span>
+        <% end %>
+     <% end %>
+    <% else %>
+      <span class="fa fa-heart like-btn">  <%= Like.where(comment_id: post.id).count %></span>
+    <% end %>
+  </div>
+<% end %>
+
+<% else %>
+  <p class="second-title pt-4 pb-5" >過去の実績は非公開です</p>
+<% end %>
+</div> 
+</div>
+</div>

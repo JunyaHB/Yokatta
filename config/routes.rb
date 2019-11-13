@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'oauth/new'
   get 'oauth/create'
   get 'oauth/destroy'
+
   namespace :admin do
     resources :users
   end  
@@ -27,6 +28,8 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'oauth#create'
   get 'auth/failure', to: redirect('/')
   
+  get "users/:id/likes" => "users#likes"
+  get "users/:id/show_false" => "users#show_false"
 
   resources :oauth, only: %i(new create destroy)
   resources :home, only: %i(index)

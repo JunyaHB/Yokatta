@@ -769,12 +769,64 @@
 	top: 3px; 
 }
 
+.btn-profile:hover {
+  background: #1ec7bb;
+}
+
+.profileimage {
+  position: absolute;
+  top: 310px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 200px;
+  height: 200px;
+  /**border-radius: 40%;**/
+  /**box-shadow: 0 2px 6px #c1ced7;**/
+  object-fit: cover;
+  padding: 5px;
+  background-color: #FFFFFF;
+  box-shadow: 0 3px 18px -4px rgba(0, 0, 0, 0.8);  
+}
+
+.profile-comment{
+  margin: 0 auto;
+  width: 450px;
+}
+
+.profile-name{
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.user-tabs {
+  margin-top: 40px;
+  background-color: white;
+  overflow: hidden;
+  border-top: solid 1px #0085a1;
+  border-bottom: solid 1px #0085a1;
+  display: flex;
+  justify-content: center;
+}
+
+.user-tabs li {
+  list-style: none;
+}
 
 
+.user-tabs li.active a {
+  color: #0085a1;
+  font-weight: bold;
+  border-bottom: solid 3px #0085a1;
+}
 
-
-
-
+.user-tabs a {
+  display: inline-block;
+  padding: 16px 30px;
+  color: #afb6bf;
+}
 
 
 

@@ -4,7 +4,10 @@ class User < ApplicationRecord
   has_many :posts
 
   mount_uploader :image_name, ImageNameUploader
+  #背景画像用
+  mount_uploader :backimage, ImageNameUploader
   validates :name, {presence: true, uniqueness: true, length: {maximum: 10}}  
+  validates :comment, {length: {maximum: 100}}  
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, {presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: true}  
 

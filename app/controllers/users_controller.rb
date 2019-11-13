@@ -9,6 +9,22 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @user = User.find(params[:id])
+    @posts = Post.where(category: true).where(user_id: "#{@user.id}")
+    sucsess = Post.where(user_id: "#{@user.id}").where(category: true).count
+    failuer = Post.where(user_id: "#{@user.id}").where(category: false).count
+    @chart = [['成功体験', "#{sucsess}"], ['失敗体験', "#{failuer}"]]
+  end
+
+def show_false
+  @user = User.find(params[:id])
+  @posts = Post.where(category: false).where(user_id: "#{@user.id}")
+  sucsess = Post.where(user_id: "#{@user.id}").where(category: true).count
+  failuer = Post.where(user_id: "#{@user.id}").where(category: false).count
+  @chart = [['成功体験', "#{sucsess}"], ['失敗体験', "#{failuer}"]]
+end
+
   def edit
     @user = User.find(params[:id])
   end
@@ -29,8 +45,8 @@ class UsersController < ApplicationController
       File.binwrite("public/user_images/#{@user.image_name}", image.read)
     end
 
-    @user.update!(user_params)
-    redirect_to posts_url, notice: "プロフィールを編集しました。"
+       @user.update!(user_params)
+       redirect_to "/users/#{@user.id}", notice: "プロフィールを編集しました。"
   end
   
   def create
@@ -46,7 +62,7 @@ class UsersController < ApplicationController
       end    
       @user.save
       session[:user_id] = @user.id
-      redirect_to posts_url, notice: "ユーザー登録が完了しました。"
+      redirect_to "/users/#{current_user.id}", notice: "ユーザー登録が完了しました。"
     else
       render :new
     end
@@ -56,10 +72,19 @@ class UsersController < ApplicationController
     @user = User.all
   end
 
+  def likes
+    @user = User.find_by(id: params[:id])
+    @likes = Like.where(user_id: @user.id)
+
+    sucsess = Post.where(user_id: "#{@user.id}").where(category: true).count
+    failuer = Post.where(user_id: "#{@user.id}").where(category: false).count
+    @chart = [['成功体験', "#{sucsess}"], ['失敗体験', "#{failuer}"]]
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image_name)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image_name, :backimage, :comment, :public)
   end
 
   def login_required

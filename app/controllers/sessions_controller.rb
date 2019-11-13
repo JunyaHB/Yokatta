@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
     if @user&.authenticate(session_params[:password])
        session[:user_id] = @user.id
-       redirect_to root_url, notice: "ログインしました。"
+       redirect_to "/users/#{current_user.id}", notice: "ログインしました。"
     else
       flash.now[:danger] = "ログインに失敗しました。正しいメールアドレスとパスワードをご入力ください。"
       render :new

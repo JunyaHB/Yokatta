@@ -32,13 +32,18 @@
         <% else %>  
            <img class="hoge" src="<%= "/user_images/default_user.png" %>">
         <% end %>
-
         <% if @i == 1 %>
-          <p class="username-rinking"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal gold"></span></p>
+          <%= link_to "/users/#{post.user.id}" do %>
+            <p class="username-rinking"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal gold"></span></p>
+          <% end %>
         <% elsif @i == 2 %>
-          <p class="username-rinking"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal silver"></span></p>
+          <%= link_to "/users/#{post.user.id}" do %>
+            <p class="username-rinking"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal silver"></span></p>
+          <% end %>
         <% else %>
-          <p class="username-rinking"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal dou"></span></p>
+          <%= link_to "/users/#{post.user.id}" do %>
+            <p class="username-rinking"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal dou"></span></p>
+          <% end %>
         <% end %>
         <p class="post_cate-ranking">成功体験：</p>
         <p class="post-ranking"><%= post.content %></p>
@@ -78,11 +83,17 @@
         <% end %>
   
         <% if @i == 4 %>
-          <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal gold"></span></p>
-        <% elsif @i == 5 %>
-          <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal silver"></span></p>
+          <%= link_to "/users/#{post.user.id}" do %>
+            <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal gold"></span></p>
+          <% end %>
+            <% elsif @i == 5 %>
+          <%= link_to "/users/#{post.user.id}" do %>
+            <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal silver"></span></p>
+          <% end %>    
         <% else %>
-          <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal dou"></span></p>
+          <%= link_to "/users/#{post.user.id}" do %>
+            <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span><span class="fas fa-medal dou"></span></p>
+          <% end %>    
         <% end %>
 
         <p class="post_cate">失敗体験：</p>
@@ -124,6 +135,9 @@
   <p class="second-title pt-4" >日常の成功談/失敗談を気軽に共有しよう！</p>
   <center class="mb-4" style="font-weight: bold;">～最近の投稿～</center>
 
+  <div class="ml-2">
+　  <%= paginate @posts %>
+  </div>
 
 
 
@@ -137,8 +151,9 @@
       <% else %>  
        <img class="hoge" src="<%= "/user_images/default_user.png" %>">
       <% end %>
-
-      <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span></p>
+        <%= link_to "/users/#{post.user.id}" do %>
+          <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span></p>
+        <% end %>
       <p class="post_cate">成功体験：</p>
       <p class="post"><%= post.content %></p>
 
@@ -171,8 +186,9 @@
        <% else %>  
         <img class="hoge" src="<%= "/user_images/default_user.png" %>">
       <% end %>
-
-      <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span></p>
+      <%= link_to "/users/#{post.user.id}" do %>
+        <p class="username"><%= "#{post.user.name}" %><span style="font-size:15px">  さん</span></p>
+        <% end %>
       <p class="post_cate">失敗体験：</p>
       <p class="post"><%= post.content %></p>
       
@@ -200,9 +216,7 @@
   <% end %>
 <% end %>
 </div>
-</div>
-<div class="mt-2 mb-5 ml-4">
+ <div class="mt-2 pb-2 ml-2">
   <%= paginate @posts %>
+ </div>
 </div>
-
-
