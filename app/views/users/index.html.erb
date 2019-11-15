@@ -32,7 +32,8 @@
         admin:  <%= user.admin %>
         
         <%= link_to "編集", "/admin/users/#{user.id}/edit", class:"content-edit" %>
-        
+        <%= link_to "削除", "/admin/users/#{user.id}/destroy", method: :delete, class:"content-delete" %>
+
       </div>
     <% end %>
   </div>
