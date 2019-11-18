@@ -2,6 +2,8 @@ class User < ApplicationRecord
   before_save { self.email = email.downcase }
   has_secure_password validations: false
   has_many :posts, dependent: :destroy
+  has_many :likes, foreign_key: "user_id", dependent: :destroy
+  
 
   mount_uploader :image_name, ImageNameUploader
   #背景画像用

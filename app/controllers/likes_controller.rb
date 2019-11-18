@@ -6,6 +6,7 @@ class LikesController < ApplicationController
     @like = Like.new(
     user_id: current_user.id,
     comment_id: params[:post_id])
+  
     @like.save
     redirect_to posts_url
   end

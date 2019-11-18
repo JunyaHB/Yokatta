@@ -1,3 +1,7 @@
 class Like < ApplicationRecord
-  has_many :posts, dependent: :destroy
+  belongs_to :user
+
+
+  validates :user_id, presence: true
+  validates :comment_id, presence: true
 end
