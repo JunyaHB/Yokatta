@@ -31,7 +31,13 @@ Rails.application.routes.draw do
   get "users/:id/likes" => "users#likes"
   get "users/:id/show_false" => "users#show_false"
 
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
   resources :oauth, only: %i(new create destroy)
   resources :home, only: %i(index)
-
+  resources :relationships, only: [:create, :destroy]
 end

@@ -33,7 +33,6 @@
 <div style="background-image: url('/stripes.png')">
 <div class="container">
 
-
 　<div class="row">
     <% if @user.image_name? %>
       <%= image_tag "#{@user.image_name.url}", class:"profileimage" %> 
@@ -49,12 +48,21 @@
   </div> 
 
 <% if current_user.id == @user.id %>  
-<center>
-  <%= link_to  "/users/#{@user.id}/edit", class: 'btn btn-primary mb-4' do %>
-    <i class="fa fa-chevron-right"></i>プロフィール編集
-  <% end %>
-</center>
+  <center>
+    <%= link_to  "/users/#{@user.id}/edit", class: 'btn btn-primary mb-4' do %>
+      <i class="fa fa-chevron-right"></i>プロフィール編集
+    <% end %>
+  </center>
+<% else %>
+  <center>
+    <%= render 'follow_form' if current_user %>
+  </center>
 <% end %>
+
+
+
+
+
 
 <% if @user.public == true || current_user.id == @user.id %>
 <p class="second-title mb-3" >活動実績<i class="fas fa-chart-line ml-2"></i></p>
@@ -62,7 +70,7 @@
 <div class="row">
   <div class="col-md-12 col-lg-6" style="margin: auto 0">
     <p><i class="fas fa-history mr-2"></i><%= "#{@user.created_at.strftime('%Y年%m月%d日')}" %>から"Yokatta!"を利用しています</p>
-    <p><i class="fas fa-users mr-2"></i>フォロワー　99人 ※フォロー機能は、近日実装予定</p>                                                
+    <p><%= render 'shared/stats' %></p>
     <p><i class="fas fa-paper-plane mr-2"></i>投稿件数　<%= @user.posts.where(user_id: "#{@user.id}").count %>件</p>
   </div>
   <div class="col-md-12 col-lg-6">
