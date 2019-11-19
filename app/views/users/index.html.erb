@@ -27,7 +27,8 @@
         <% end %>
         </br></br>
         id:     <%= user.id %></br>
-        name:   <%= user.name %></br>
+        name:<%= link_to "/users/#{user.id}" do %>　<%= user.name %></br><% end %>
+
         email:  <%= user.email %></br>
         admin:  <%= user.admin %>
         
