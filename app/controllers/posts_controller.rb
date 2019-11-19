@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
-  before_action :login_required, only: %i[create, new]
-  before_action :edit_login_required, only: %i[update, edit]
+  before_action :login_required, only: %i[create new]
+  before_action :edit_login_required, only: %i[update edit]
   before_action :destroy_login_required, only: %i[destroy]
   
   def index

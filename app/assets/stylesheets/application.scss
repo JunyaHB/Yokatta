@@ -437,10 +437,30 @@
                   background-color:#00657b!important;
                   border-color:#00657b!important
                 }
+
+                .btn-primary2{
+                  background-color:#0085a1;
+                  border-color:#0085a1;
+                  color:#fff;
+                  padding:5px 15px;
+                  position: relative;
+                  bottom: 30px;
+                  left: 500px;
+                }
+
+
+                .btn-primary2:active,
+                .btn-primary2:focus,
+                .btn-primary2:hover{
+                  color:#fff;
+                  background-color:#00657b!important;
+                  border-color:#00657b!important
+                }
                 
+
                 .btn-lg{
                   font-size:16px;
-                  padding:25px 35px
+                  padding:25px 35p
                 }
 
 
@@ -828,6 +848,50 @@
   color: #afb6bf;
 }
 
+
+
+
+
+.users-index-item {
+  padding: 20px 30px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 2px 6px #c1ced7;
+  display: table;
+  width: 100%;
+}
+
+.users-index-item-center {
+  margin: 0 auto;
+}
+
+.user-left {
+  width: 50px;
+  height: 60px;
+  box-shadow: 0 2px 6px #c1ced7;
+  object-fit: cover;
+}
+
+.followscomment{
+  font-size: 10px;
+  margin-left: 90px;
+  position: absolute;
+  bottom: 20px;
+  width: 500px
+}
+
+.user-left {
+  float: left;
+  width: 10%;
+}
+
+.user-right {
+  width: 90%;
+  padding-left: 25px;
+  text-align: left;
+  display: table-cell;
+  vertical-align: middle;
+}
 
 
 

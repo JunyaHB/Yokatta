@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
-  before_action :login_required, only: %i[edit]
-  before_action :edit_limit, only: %i[edit, update]
-  before_action :require_admin, only: %i[destroy, index]
+  before_action :login_required, only: %i[following followers edit]
+  before_action :edit_limit, only: %i[edit update]
+  before_action :require_admin, only: %i[destroy index]
   before_action :postsindex_redirect, only: %i[new]
   
   def new
@@ -79,6 +79,18 @@ end
     sucsess = Post.where(user_id: "#{@user.id}").where(category: true).count
     failuer = Post.where(user_id: "#{@user.id}").where(category: false).count
     @chart = [['成功体験', "#{sucsess}"], ['失敗体験', "#{failuer}"]]
+  end
+
+  def following
+    @user  = User.find(params[:id])
+    @users = @user.following.page(params[:page]).per(25)
+    render 'show_follow'
+  end
+
+  def followers
+    @user  = User.find(params[:id])
+    @users = @user.followers.page(params[:page]).per(25)
+    render 'show_follow'
   end
 
   private
