@@ -11,6 +11,12 @@ class PostsController < ApplicationController
     @i = 1
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @advices = @post.advices
+    @advice = Advice.new
+  end
+
   def edit
     @post = Post.find(params[:id])
   end

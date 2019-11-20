@@ -1,0 +1,81 @@
+<!-- Page Header -->
+<header class="comment-head pt-5 pb-3">
+</header>
+
+
+<!-- Main Content -->
+<div class="container mt-3">
+
+  <div class="posts-item">
+  <% if @post.user.image_name? %>
+    <%= image_tag "#{@post.user.image_name.url}", class:"user-post" %> 
+  <% else %>  
+    <img class="user-post" src="<%= "/user_images/default_user.png" %>">
+  <% end %>  
+  <%= link_to "/users/#{@post.user.id}" do %>
+    <p class="post-user-name"><%= "#{@post.user.name}" %><span style="font-size:20px">  さん</span><span class="ml-5"style="font-size:18px">投稿日：<%= @post.created_at.strftime('%Y年%m月%d日 %H時%M分') %></span></p>
+  <% end %>
+    <p class="post-content"><%= @post.content %></p>
+  </div>     
+  
+  <% @advices.each do |advice| %>
+    <% if advice.user.id == @post.user.id %>
+
+    <div class="comment-box-left ml-4">
+      <% if advice.user.image_name? %>
+        <%= image_tag "#{advice.user.image_name.url}", class:"user-comment-left" %> 
+      <% else %>  
+        <img class="user-comment-left" src="<%= "/user_images/default_user.png" %>">
+      <% end %>  
+
+      <%= link_to "/users/#{advice.user.id}" do %>
+        <p class="comment-user-name-left pr-5"></span><%= "#{advice.user.name}" %><span style="font-size:20px">  さん</span><span class="ml-5"style="font-size:18px">投稿日：<%= advice.user.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+      <% end %>
+  
+      <p class="comment-content-left"><%= advice.content %></p>
+
+      <% if advice.user_id == current_user.id %>
+        <p class="delete-comment-left"><%= link_to "削除", "/posts/#{@post.id}/advices/#{advice.id}", method: :delete, data: { confirm: "コメントを削除します。よろしいですか？"} %></p>
+      <% end %>  
+      </div>
+
+
+    <% else %>
+
+    <div class="comment-box-right">
+      <% if advice.user.image_name? %>
+        <%= image_tag "#{advice.user.image_name.url}", class:"user-post-right" %> 
+      <% else %>  
+        <img class="user-post-right" src="<%= "/user_images/default_user.png" %>">
+      <% end %>  
+
+      <%= link_to "/users/#{advice.user.id}" do %>
+        <p class="comment-user-name pr-5"></span><span class="mr-5"style="font-size:18px">投稿日：<%= advice.user.created_at.strftime('%Y年%m月%d日 %H時%M分') %></span><%= "#{advice.user.name}" %><span style="font-size:20px">  さん</span></p>
+      <% end %>
+  
+      <p class="comment-content"><%= advice.content %></p>
+
+      <% if advice.user_id == current_user.id %>
+        <p class="delete-comment"><%= link_to "削除", "/posts/#{@post.id}/advices/#{advice.id}", method: :delete, data: { confirm: "コメントを削除します。よろしいですか？"} %></p>
+      <% end %>  
+      </div>
+    <% end %>
+  <% end %>
+  
+
+
+
+  <%= form_with(model: [@post, @advice], local: true) do |f| %>
+    <div class="form-group">
+      <%= f.label :"コメントを投稿する（100文字まで）" %></br>
+      <%= f.text_field :content, class: 'form-control', rows: 5 %>
+    </div>
+    <%= f.submit "コメントを投稿", class: "btn btn-primary mt-2" %>
+  <% end %>
+
+
+
+
+</div>
+
+

@@ -58,8 +58,9 @@
         <% end %>
         <% end %>
         <p class="post_cate-ranking">成功体験：</p>
-        <p class="post-ranking"><%= post.content %></p>
-  
+          <%= link_to "/posts/#{post.id}" do %>
+            <p class="post-ranking"><%= post.content %></p>
+          <% end %>    
   
         <% if current_user %>      
           <% if Like.find_by(user_id: current_user.id, comment_id: post.id) %>
@@ -121,7 +122,9 @@
         <% end %>
 
         <p class="post_cate">失敗体験：</p>
-        <p class="post"><%= post.content %></p>
+          <%= link_to "/posts/#{post.id}" do %>
+            <p class="post"><%= post.content %></p>
+          <% end %>    
         
   
       <% if current_user %>          
@@ -184,7 +187,9 @@
       <% end %>
       
       <p class="post_cate">成功体験：</p>
-      <p class="post"><%= post.content %></p>
+      <%= link_to "/posts/#{post.id}" do %>  
+        <p class="post"><%= post.content %></p>
+      <% end %>    
 
       <% if current_user %>
         <% if current_user.admin? || post.user_id == current_user.id %>
@@ -225,8 +230,9 @@
       <% end %>
 
       <p class="post_cate">失敗体験：</p>
-      <p class="post"><%= post.content %></p>
-      
+        <%= link_to "/posts/#{post.id}" do %>
+          <p class="post"><%= post.content %></p>
+        <% end %>    
       <% if current_user %>
         <% if current_user.admin? || post.user_id == current_user.id %>
         <%= link_to "削除", "/posts/#{post.id}/destroy", method: :delete, class:"content-delete", data: { confirm: "投稿を削除します。よろしいですか？"} %>

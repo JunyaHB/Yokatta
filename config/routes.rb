@@ -40,4 +40,7 @@ Rails.application.routes.draw do
   resources :oauth, only: %i(new create destroy)
   resources :home, only: %i(index)
   resources :relationships, only: [:create, :destroy]
+  resources :posts do 
+    resources :advices, only: [:create, :destroy]
+  end
 end

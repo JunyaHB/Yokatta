@@ -870,6 +870,7 @@
   height: 70px;
   box-shadow: 0 2px 6px #c1ced7;
   object-fit: cover;
+  
 }
 
 .followscomment{
@@ -893,5 +894,113 @@
   vertical-align: middle;
 }
 
+.comment-head {
+  background-color: #ffb700;
+}
 
 
+.posts-item {
+  padding: 20px 30px;
+  background-color: white;
+  overflow: hidden;
+  /**box-shadow: 0 2px 6px #c1ced7;**/
+  display: table;
+  width: 100%;
+}
+
+.user-post {
+  width: 135px;
+  height: 120px;
+  
+  object-fit: cover;
+  float: left;
+  border-right:5px solid #ffb700;
+  padding-right:10px;
+}
+
+.post-user-name {
+  position: relative;
+  bottom: 30px;
+  left: 10px;
+  font-size: 25px;
+}
+
+.post-content{
+  font-size: 15px;
+  width: 550px;  
+  position: relative;
+  margin-left: 145px;
+  bottom: 65px;
+  }
+
+.user-post-right{
+  width: 135px;
+  height: 120px;
+  object-fit: cover;
+  float: right;
+  border-left:5px solid #ffb700;
+  padding-left:10px;  
+}
+
+.comment-user-name{
+  text-align: right;
+  margin-right: 100px;
+}
+
+.comment-content{
+  font-size: 15px;
+  position: relative;
+  bottom: 25px;
+  width: 660px;
+  margin-left: auto;
+  padding-right: 145px;
+  height: 15px;  
+}
+
+.comment-box-right{
+  text-align: right;
+  padding-bottom: 5px;
+}
+
+.comment-box-left{
+  text-align: left;
+  padding-bottom: 5px;
+}
+
+.delete-comment{
+  font-size: 15px;
+  position: relative;
+  padding-right: 145px;
+  bottom: 7px;
+}
+
+.delete-comment-left{
+  font-size: 15px;
+  position: relative;
+  padding-left: 145px;
+  bottom: 7px;
+}
+
+.user-comment-left{
+  width: 135px;
+  height: 120px;
+  object-fit: cover;
+  float: left;
+  border-right: 5px solid #ffb700;
+  padding-right: 10px;  
+}
+
+.comment-user-name-left {
+  text-align: left;
+  margin-left: 145px; 
+}
+
+.comment-content-left {
+  font-size: 15px;
+  position: relative;
+  bottom: 25px;
+  width: 660px;
+  margin-right: auto;
+  padding-left: 145px;
+  height: 15px;
+}
