@@ -1,0 +1,7 @@
+<% if current_user %>      
+<%= link_to "/posts/#{post.id}" do %>
+  <p class="post-ranking"><%= post.content %></p>
+<% end %>    
+<% else %>    
+<p class="post-ranking"><%= post.content %></p>
+<% end %>    
