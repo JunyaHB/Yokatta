@@ -1,0 +1,75 @@
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('/homeimage.jpg')">
+  <div class="overlay" style="opacity:.5;"></div>
+  <div class="container p-5">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading" style="padding:150px 0;">
+          <h2>体験の共有とアドバイスで、もっと繋がろう！</h2>
+          <span class="subheading mt-3" style="font-size:17px; font-weight:bold;">Yokatta! は、成功体験/失敗体験の共有と意見交換による学びを目的とするサービスです<br>多くの体験と価値観を取り入れ、充実した人生を実現しましょう！</span>
+
+          <center>
+            <%= link_to  users_path, class: 'btn btn-gradient-flat mt-4' do %>
+              <i class="fa fa-chevron-right mr-2"></i>成功体験/失敗体験の閲覧はコチラ！<i class="far fa-hand-point-up ml-2" style="font-size:20px;"></i>
+            <% end %>
+          </center>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container mb-4">
+  <p class="second-title pt-4" >Yokatta! のご提供するサービス</p>
+  <div class="row justify-content-center">
+    <div class="col-md-3">
+      <%= image_tag "/post.jpg", :size =>"200x200" %>
+        <center><span style="font-weight:bold;">経験の共有！</span></center>
+        <span style="font-size:17px;">みんなにちょっぴり自慢したい成功体験やモヤモヤする失敗体験をアウトプットできます</span>
+    </div>
+    <div class="col-md-3 mr-5 ml-5">
+      <%= image_tag "/communicate.jpg", :size =>"200x200" %>
+      <center><span style="font-weight:bold;">みんなで学び合う！</span></center>
+      <span style="font-size:17px;">1つの投稿に対して意見を交換し合うことができます</span>
+    </div>
+    <div class="col-md-3">
+      <%= image_tag "/review.jpg", :size =>"200x200" %>
+      <center><span style="font-weight:bold;">学びを振り返る！</span></center>
+      <span style="font-size:17px;">自分の過去の投稿と興味を持った投稿の振り返りで、より深い学びを得ることができます</span>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-5 pb-5" style="background-color: #FFE9B2;">
+　<center><h4>Yokatta! のご利用方法</h4></center>
+　<center>※無料会員登録がお済みでない場合、体験閲覧のみご利用頂けます。</center>
+
+　<p class="second-title" style="font-size:20px;" ><i class="fa fa-chevron-right mr-2"></i>体験の閲覧</p>
+  <center><%= image_tag "/post_description.PNG", :size =>"830x365" %></center>
+
+  <p class="second-title mt-5" style="font-size:20px;" ><i class="fa fa-chevron-right mr-2"></i>投稿の意見交換</p>
+  <center><%= image_tag "/communicate_description.PNG", :size =>"830x375" %></center>
+
+  <p class="second-title mt-5" style="font-size:20px;" ><i class="fa fa-chevron-right mr-2"></i>学んだことの振返り</p>
+  <center><%= image_tag "/past_description.PNG", :size =>"830x375" %></center>
+
+  <p class="second-title mt-5" style="font-size:20px;" ><i class="fa fa-chevron-right mr-2"></i>気になるユーザーをフォロー</p>
+  <center><%= image_tag "/follow_description.PNG", :size =>"830x375" %></center>
+
+  <p class="second-title mt-5" style="font-size:20px;" ><i class="fa fa-chevron-right mr-2"></i>フォロー/フォロワーの確認</p>
+  <center><%= image_tag "/followmember_description.PNG", :size =>"830x375" %></center>
+
+  <p class="second-title mt-5" style="font-size:20px;" ><i class="fa fa-chevron-right mr-2"></i>気になる投稿をいいね！</p>
+  <center><%= image_tag "/like_description.PNG", :size =>"830x330" %></center>
+</div>
+
+<div class="container">
+  <p class="second-title pt-5" >新規会員登録で、体験閲覧以外の機能も利用する！</p>
+  <p class="second-title" >1分程で会員登録可能です</p>
+  <center>
+    <%= link_to  new_user_path, class: 'btn btn-gradient-flat mt-4' do %>
+      <i class="fa fa-chevron-right mr-2"></i>無料会員登録へ進む<i class="far fa-hand-point-up ml-2" style="font-size:20px;"></i>
+    <% end %>
+  </center>
+</div>

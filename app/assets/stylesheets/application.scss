@@ -210,7 +210,8 @@
         header.masthead .page-heading,
         header.masthead .post-heading,
         header.masthead .site-heading{
-          padding:200px 0 150px;color:#fff
+          padding:200px 0 150px;
+          color:#fff
         }
         
         @media only screen and (min-width:768px){
@@ -455,6 +456,23 @@
                   color:#fff;
                   background-color:#00657b!important;
                   border-color:#00657b!important
+                }
+
+
+                .btn-gradient-flat {
+                  display: inline-block;
+                  padding: 0.5em 1em;
+                  text-decoration: none;
+                  color: #FFF;
+                  background-image: linear-gradient(#6795fd 0%, #67ceff 100%);
+                  transition: .4s;
+                  border-radius: 4px;
+                  padding: 15px 160px;
+                  font-size: 16px;
+                }
+                
+                .btn-gradient-flat:hover {
+                  background-image: linear-gradient(#6795fd 0%, #67ceff 70%);
                 }
                 
 
@@ -1003,4 +1021,8 @@
   margin-right: auto;
   padding-left: 145px;
   height: 15px;
+}
+
+.a{
+ margin: 0 auto;
 }

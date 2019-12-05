@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   delete "posts/:id/destroy" => "posts#destroy"
   delete "/admin/users/:id/destroy" => "users#destroy"
-  root to: 'posts#index'
+  root to: 'static_pages#home'
   resources :users
   resources :posts
 
