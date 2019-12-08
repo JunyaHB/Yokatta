@@ -1,24 +1,46 @@
-# README
+# Yokatta!
+ 
+成功体験/失敗体験の共有と意見交換による学び合いを目的とするアプリです
+ 
+## アプリ概要
+ 
+成功体験/失敗体験を投稿することが可能です
+1つの投稿に対して、コメントを行うことで意見交換が可能です
+過去の成功体験/失敗体験の投稿割合をグラフで確認し振り返ることが可能です
+気になるユーザーをフォローすることが可能です
+気になる投稿をいいね！することが可能です
+  
+## 機能
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Ruby on Railsで制作したアプリとなります**
 
-Things you may want to cover:
+・ユーザー登録機能を実装し、ログインしないと閲覧できないページや使用できない機能を実装
+・セキュリティを配慮し、パスワードのハッシュ化やhttpsリダイレクトを実装
+・GoogleAPIを採用し、GoogleOAuthによるユーザー認証機能を実装
+・プロフィール画像、背景画像のアップロード先をAWSのS3となるよう実装
+・スマートフォンの使用を考慮し、レスポンシブデザインを実装
+ 
+## 使い方
+ 
+1. 画面右上の「新規登録」「ログイン」ボタンよりユーザ登録・ログインができます
+2. ログイン後、「新規投稿」ボタンより成功体験/失敗体験を投稿できます
+3. 「投稿を見る」ボタンから投稿された体験をみることができます
+ 
+## インストール
+ 
+```
+$ git clone https://github.com/JunyaHB/Yokatta.git
+$ cd Yokatta
+$ bundle install
+```
+ 
+## 今後の開発予定
+ 
+Rspecによるテストコードの記述を予定しております。
+Ajaxによるレスポンシブ速度の改善を予定しております。
+リファクタリングによって可読性の高いコードへ修正を予定しております。
+  
+## ライセンス
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project is licensed free.  
+ご自由にご利用ください
